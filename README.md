@@ -14,5 +14,16 @@ so let's create our own version of akka - **everest**
 
 
 ###Tasks
-[ ] define requirements
-[ ] everest-actor
+
+#### everest-actor
+Actor is a lightweight concept for concurrency.
+
+##### key concepts:
+
+- Actor System
+- Actor
+- Mailbox
+- Actor Selection & ActorRef
+- Actor
+- SupervisorStrategy
+- Actor Deployment
