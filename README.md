@@ -22,15 +22,14 @@ Actor is a lightweight concept for concurrency.
 
 - Actor System
 
-    - ActorSystem is a system which has thread pool behind, responsible to execute actors
+    a system which has thread pool behind, responsible to execute actors
+
 - Actor
 
     Actor is just a bunch of code which only respond to messages in its mailbox.
     Actor can not be initialized other than ActorSystem
-    
-- ActorRef
-
     representing a actor(locally or remotely), can be used to send message to the underlying actor
+
 - ActorCell
 
     a Actor's stub within ActorSystem(can it be replaced with Actor?)
