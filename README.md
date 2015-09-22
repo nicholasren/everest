@@ -1,6 +1,6 @@
 ### Why everest?
 
-<img src="./docs/images/mt-everest-summer.jpg" width="200"/>
+<img src="./docs/images/mt-everest-summer.jpg" width="400"/>
 
 This project aims to create a clone of [akka](http://akka.io). This project is for learning purpose,
 
