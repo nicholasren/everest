@@ -8,7 +8,7 @@ class LocalActorRef(val system: ActorSystem, val clazz: Class[_]) extends ActorR
   }
 
   def actorCell(): ActorCell = {
-    return new ActorCell(clazz)
+    return new ActorCell(system, clazz)
   }
 
 }

@@ -1,10 +1,20 @@
 package everest.actor
 
-class ActorCell(val clazz: Class[_]) {
+class ActorCell(val system: ActorSystem, val clazz: Class[_]) {
 
-  val actor = clazz.newInstance().asInstanceOf[Actor]
+  val actor = instantiate(clazz).asInstanceOf[Actor]
 
   def sendMessage(message: Any)(sender: ActorRef) = {
-    actor.receive(message)
+    system.accept(actor, message);
+  }
+
+
+  private
+
+  def instantiate[T](clazz: Class[T]): T = try clazz.newInstance catch {
+    case iae: IllegalAccessException ⇒
+      val ctor = clazz.getDeclaredConstructor()
+      ctor.setAccessible(true)
+      ctor.newInstance()
   }
 }

@@ -6,13 +6,15 @@ object Main extends App {
 
   val echo = system.actorOf[Echo]
 
-  echo ! "hello"
+  for( i <- 1 to 10000) {
+    echo ! s"hello world $i"
+  }
 
 }
 
 
 class Echo extends Actor {
   override def receive(msg: Any): Unit = {
-    println("I received hello world")
+    println("I received message: " + msg)
   }
 }
