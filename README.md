@@ -47,6 +47,11 @@ Actor is a lightweight concept for concurrency.
 
 
 ### Tasks:
-local actor run synchronously
-local actor run asynchronously(driven by a thread pool)
-local actor supervisation
+local actor 
+    - run synchronously
+    - run asynchronously(driven by a thread pool)
+    - be aware of sender
+        - an inbox can function as a implicit sender
+    - actor creation & selection
+    - respond to `ask` 
+    - supervisation

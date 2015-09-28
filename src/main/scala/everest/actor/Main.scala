@@ -14,7 +14,7 @@ object Main extends App {
 
 
 class Echo extends Actor {
-  override def receive(msg: Any): Unit = {
-    println("I received message: " + msg)
+  override def receive(msg: Any)(implicit sender: ActorRef): Unit = {
+    println(msg)
   }
 }

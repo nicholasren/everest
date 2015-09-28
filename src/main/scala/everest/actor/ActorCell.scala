@@ -5,7 +5,7 @@ class ActorCell(val system: ActorSystem, val clazz: Class[_]) {
   val actor = instantiate(clazz).asInstanceOf[Actor]
 
   def sendMessage(message: Any)(sender: ActorRef) = {
-    system.accept(actor, message);
+    system.accept(actor, message)(sender);
   }
 
 

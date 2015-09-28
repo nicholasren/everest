@@ -6,9 +6,9 @@ import scala.collection.mutable
 import scala.reflect.ClassTag
 
 class ActorSystem(val name: String) {
-  def accept(actor: Actor, message: Any) = {
+  def accept(actor: Actor, message: Any)(implicit sender: ActorRef) = {
     pool.submit(new Runnable {
-      override def run(): Unit = actor.receive(message)
+      override def run(): Unit = actor.receive(message)(sender)
     })
   }
 

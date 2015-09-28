@@ -2,8 +2,9 @@ package everest.actor
 
 class EchoActor extends Actor {
 
-  def receive(message: Any): Unit = {
-
+  override def receive(message: Any)(implicit sender: ActorRef): Unit = {
+      println(sender)
+      sender ! message
   }
 
 }

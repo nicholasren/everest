@@ -18,12 +18,18 @@ class ActorSpec extends WordSpecLike with Matchers {
       assert(echo != null)
     }
 
-    "be able to respond message" in {
-      echo ! "hello"
+  }
 
-      assert(i.receive() === "hello")
+  "An Inbox" must {
+    val echo = system.actorOf[EchoActor]
+
+    "function as implicit sender" in {
+      //#inbox
+      implicit val i = inbox()
+      echo ! "hello"
+      i.receive() should ===("hello")
+      //#inbox
     }
   }
-  
 
 }
