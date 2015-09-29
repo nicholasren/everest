@@ -1,17 +1,21 @@
 package everest.actor
 
 import everest.actor.exceptions.DuplicatedActorNameException
-import org.scalatest.{Matchers, WordSpecLike}
+import org.scalatest.{BeforeAndAfter, Matchers, WordSpecLike}
 
 import scala.util.{Success, Failure}
 
-class ActorCreationSpec extends WordSpecLike with Matchers {
+class ActorCreationSpec extends WordSpecLike with Matchers with BeforeAndAfter {
 
   var system: ActorSystem = new ActorSystem("actor-system")
 
   def inbox() = new Inbox()
 
   implicit val i = inbox()
+
+  after {
+    system.terminate
+  }
 
 
   "a actor" must {
@@ -35,10 +39,8 @@ class ActorCreationSpec extends WordSpecLike with Matchers {
 
     "be associated with a path" in {
       val echo = system.actorOf[EchoActor]
-      echo.get.path should ===("akka://actor-system/EchoActor-0")
+      echo.get.path should fullyMatch regex("akka://actor-system/EchoActor-\\d+")
     }
-
-
   }
 
   "An Inbox" must {

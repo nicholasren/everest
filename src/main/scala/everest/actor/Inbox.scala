@@ -15,6 +15,5 @@ class Inbox extends ActorRef {
 
   override def !(message: Any)(implicit sender: ActorRef): Unit = {
     messages += message
-    println("received: " + messages.size)
   }
 }

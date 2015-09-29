@@ -1,5 +1,5 @@
 package everest.actor.exceptions
 
-class DuplicatedActorNameException extends Throwable{
+class DuplicatedActorNameException(val actorName: String) extends Throwable{
 
 }
