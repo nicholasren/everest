@@ -4,10 +4,12 @@ import scala.collection.mutable
 
 class Inbox extends ActorRef {
 
+  def path = "akka://system/inbox"
+
   val messages = mutable.MutableList[Any]()
 
   def receive(): Any = {
-    Thread.sleep(1000)
+    Thread.sleep(2000)
     messages.head
   }
 

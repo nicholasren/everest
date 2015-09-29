@@ -46,11 +46,18 @@ Actor is a lightweight concept for concurrency.
 
 
 ### Tasks:
-local actor 
+local actor
+    - creation
+        - actor path
+           - top level :
+                `akka://<actor-system-name>/<actor-name>`
+           - created by parent actor:
+                `akka://<actor-system-name>/<parent-actor-name>/<actor-name>`
+
+    - lookup
     - run synchronously
     - run asynchronously(driven by a thread pool)
     - be aware of sender
         - an inbox can function as a implicit sender
-    - actor creation & selection
     - respond to `ask` 
     - supervisation
