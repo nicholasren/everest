@@ -27,7 +27,7 @@ class ActorCreationSpec extends WordSpecLike with Matchers with BeforeAndAfter {
 
     "be created by given name" in {
       val echo = system.actorOf[EchoActor]("echo-0")
-      echo.get.path should ===("akka://actor-system/echo-0")
+      echo.path should ===("akka://actor-system/echo-0")
     }
 
     "not be able to created if duplicated name provided" in {
@@ -39,12 +39,12 @@ class ActorCreationSpec extends WordSpecLike with Matchers with BeforeAndAfter {
 
     "be associated with a path" in {
       val echo = system.actorOf[EchoActor]
-      echo.get.path should fullyMatch regex("akka://actor-system/EchoActor-\\d+")
+      echo.path should fullyMatch regex("akka://actor-system/EchoActor-\\d+")
     }
   }
 
   "An Inbox" must {
-    val echo = system.actorOf[EchoActor].get
+    val echo = system.actorOf[EchoActor]
 
     "function as implicit sender" in {
       //#inbox

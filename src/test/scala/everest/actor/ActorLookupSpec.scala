@@ -14,7 +14,7 @@ class ActorLookupSpec extends WordSpecLike with Matchers {
   "a actor system" must {
 
     "find actor by lookup their path" in {
-      val echo = system.actorOf[EchoActor].get
+      val echo = system.actorOf[EchoActor]
 
       system.actorSelection(echo.path) should ===(echo)
     }

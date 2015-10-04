@@ -22,17 +22,17 @@ class ActorSystem(val name: String) {
 
   val pool = Executors.newFixedThreadPool(10)
 
-  def actorOf[T <: Actor : ClassTag]: Try[ActorRef] = actorOf[T](defaultActorNameFor[T])
+  def actorOf[T <: Actor : ClassTag](): ActorRef = actorOf[T](defaultActorNameFor[T])
 
-  def actorOf[T <: Actor : ClassTag](actorName: String): Try[ActorRef] = {
+  def actorOf[T <: Actor : ClassTag](actorName: String): ActorRef = {
     val path = actorPathFor(actorName)
 
     if (isDuplicated(path)) {
-      Failure(new DuplicatedActorNameException(actorName))
+      throw new DuplicatedActorNameException(actorName)
     } else {
       val localRef: LocalActorRef = localActorRefWith[T](path)
       actorRefs += localRef
-      Success(localRef)
+      localRef
     }
   }
 

@@ -4,7 +4,7 @@ object Main extends App {
 
   val system = new ActorSystem("hello")
 
-  val echo = system.actorOf[Echo].get
+  val echo = system.actorOf[Echo]
 
   for( i <- 1 to 10000) {
     echo ! s"hello world $i"
